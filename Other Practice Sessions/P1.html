@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>P1</title>
+</head>
+<body>
+  <h1>My second web page</h1>
+  <p id="message1">My second para</p>
+  <p id="para"></p>
+  <button onclick="function_name()">Try It</button>
+  <script> 
+    //document.write(5+6);
+    //document.getElementById("para").innerHTML = 5+0;
+    //window.alert(5+6);
+    function function_name() {
+    	// body...
+    	document.getElementById("para").innerHTML = "Hello Everybody";
+    }
+    try{
+    	adddlert("welcome");
+    }
+    catch(err){
+    	document.getElementById("message1").innerHTML = err.message;
+    }
+    </script>
+</body>
+</html>

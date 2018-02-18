@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Graphics & Maps</title>
+	<link rel="javascript" type="text/javascript" href="gma.js">
+</head>
+<body>
+    <div><canvas id="Canvas" width="200" height="100" style="border: 1px solid blue;"></canvas>  </div>
+	
+	<canvas id="Canvas1" width="200" height="100" style="border: 1px solid blue;"></canvas>  
+	
+
+
+	                <!--Google Maps
+    <h1>My First Google Map</h1>
+    <div id="map" style="width: 400px; height: 400px">My Map will come here</div>
+      -->
+
+
+
+
+    <script type="text/javascript" src="gma.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
+
+    <video width="620" height="540" controls>
+  <source src="gma.mp4?autoplay=1" type="video/mp4">
+   Your browser does not support the video tag.
+</video>
+
+<audio controls>
+  <source src="gma.mp3?autoplay=1" type="audio/mpeg" loop="true">
+Your browser does not support the audio element.
+</audio>
+
+<iframe width="420" height="315"
+src="https://www.youtube.com/embed/2nBJ_FFQuLI">
+</iframe>
+
+<iframe width="420" height="315"
+src="https://www.youtube.com/embed/cqkbU7_FdxQ">
+</iframe>
+<p>Click the button to get your coordinates.</p>
+
+<button onclick="getLocation()">Try It</button>
+
+<p id="demo"></p>
+
+<script>
+var x = document.getElementById("demo");
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else { 
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+
+function showPosition(position) {
+    x.innerHTML = "Latitude: " + position.coords.latitude + 
+    "<br>Longitude: " + position.coords.longitude;
+
+
+
+}
+
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    ev.target.appendChild(document.getElementById(data));
+}
+function clickCounter() {
+    if(typeof(Storage) !== "undefined") {
+        if (localStorage.clickcount) {
+            localStorage.clickcount = Number(localStorage.clickcount)+1;
+        } else {
+            localStorage.clickcount = 1;
+        }
+        document.getElementById("result").innerHTML = "You have clicked the button " + localStorage.clickcount + " time(s).";
+    } else {
+        document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
+    }
+}
+</script>
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+<img src="https://www.google.co.in/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwiN4O-S3oPWAhVJr48KHQOtADQQjRwIBw&url=http%3A%2F%2Fhtml.com%2Ftags%2Fimg%2F&psig=AFQjCNGlDJXTaDjyhfk5HhFYTaL7MyNGqA&ust=1504346655171959" id="drag1" draggable="true" ondragstart="drag(event)" width="336" height="69">
+
+
+
+
+
+</head>
+<body>
+<p><button onclick="clickCounter()" type="button">Click me!</button></p>
+<div id="result"></div>
+<p>Click the button to see the counter increase.</p>
+<p>Close the browser tab (or window), and try again, and the counter will continue to count (is not reset).</p>
+</body>
+</html>
